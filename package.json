@@ -1,0 +1,19 @@
+{
+  "name": "user-authentication-service",
+  "version": "1.0.0",
+  "description": "\"User related to authentication service using php server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aparmar-systango/user-authentication-service.git"
+  },
+  "author": "Abhishek Parmar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aparmar-systango/user-authentication-service/issues"
+  },
+  "homepage": "https://github.com/aparmar-systango/user-authentication-service#readme"
+}
