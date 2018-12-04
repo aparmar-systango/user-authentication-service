@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/aparmar-systango/user-authentication-service/issues"
   },
-  "homepage": "https://github.com/aparmar-systango/user-authentication-service#readme"
+  "homepage": "https://github.com/aparmar-systango/user-authentication-service#readme",
+  "dependencies": {
+    "request-response": "^0.1.2"
+  }
 }
