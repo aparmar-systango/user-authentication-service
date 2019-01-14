@@ -1,5 +1,6 @@
-rp = require('request-reponse')
-const PHP_URL = process.env.PHP_URL
+rp = require('request-promise')
+const AUTHENTICATION_MANAGER = require('../config/config')
+const PHP_URL = AUTHENTICATION_MANAGER.PHP_URL
 
 async function login(user) {
     try {
@@ -27,7 +28,7 @@ async function login(user) {
             status: response.statusCode,
             body: response.body
         }
-    } catch(err) {
+    } catch (err) {
         throw err
     }
 }
@@ -59,7 +60,7 @@ async function register(user) {
             status: response.statusCode,
             body: response.body
         }
-    } catch(err) {
+    } catch (err) {
         throw err
     }
 }
@@ -74,7 +75,8 @@ async function logout(user) {
                 'authorization': user.headers.authorization,
                 'ostype': user.headers.ostype,
                 'appversion': user.headers.appversion,
-                'appid': user.headers.appid
+                'appid': user.headers.appid,
+                'authorization': user.headers.authorization
             },
             json: true,
             resolveWithFullResponse: true
@@ -84,7 +86,7 @@ async function logout(user) {
             status: response.statusCode,
             body: response.body
         }
-    } catch(err) {
+    } catch (err) {
         throw err
     }
 }
@@ -100,6 +102,10 @@ async function deleteUser(user) {
                 'appversion': user.headers.appversion,
                 'appid': user.headers.appid
             },
+            form: {
+                email: user.body.email,
+                pass: user.body.pass
+            },
             json: true,
             resolveWithFullResponse: true
         }
@@ -108,7 +114,7 @@ async function deleteUser(user) {
             status: response.statusCode,
             body: response.body
         }
-    } catch(err) {
+    } catch (err) {
         throw err
     }
 }
@@ -136,7 +142,7 @@ async function resetPassword(user) {
             status: response.statusCode,
             body: response.body
         }
-    } catch(err) {
+    } catch (err) {
         throw err
     }
 }
@@ -167,7 +173,7 @@ async function updateImageUrl(user) {
             status: response.statusCode,
             body: response.body
         }
-    } catch(err) {
+    } catch (err) {
         throw errs
     }
 }
@@ -196,7 +202,7 @@ async function updateUser(user) {
             status: response.statusCode,
             body: response.body
         }
-    } catch(err) {
+    } catch (err) {
         throw err
     }
 }
@@ -220,7 +226,7 @@ async function getAwsS3(user) {
             status: response.statusCode,
             body: response.body
         }
-    } catch(err) {
+    } catch (err) {
         throw err
     }
 }
@@ -244,19 +250,19 @@ async function getAwsS3ForMediaSharing(user) {
             status: response.statusCode,
             body: response.body
         }
-    } catch(err) {
+    } catch (err) {
         throw err
     }
 }
 
-export const UserService =  {
-    login: login,
-    register: register,
-    logout: logout,
-    deleteUser: deleteUser,
-    resetPassword: resetPassword,
-    updateImageUrl: updateImageUrl,
-    updateUser: updateUser,
-    getAwsS3: getAwsS3,
-    getAwsS3ForMediaSharing: getAwsS3ForMediaSharing
+module.exports = UserService = function () {
+    this.login = login
+    this.register = register
+    this.logout = logout
+    this.deleteUser = deleteUser
+    this.resetPassword = resetPassword
+    this.updateImageUrl = updateImageUrl
+    this.updateUser = updateUser
+    this.getAwsS3 = getAwsS3
+    this.getAwsS3ForMediaSharing = getAwsS3ForMediaSharing
 }

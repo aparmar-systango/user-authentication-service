@@ -4,6 +4,7 @@
   "description": "\"User related to authentication service using php server",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +18,10 @@
   },
   "homepage": "https://github.com/aparmar-systango/user-authentication-service#readme",
   "dependencies": {
-    "request-response": "^0.1.2"
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.7"
   }
 }
